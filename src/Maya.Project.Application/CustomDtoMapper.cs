@@ -39,6 +39,7 @@ using Maya.Project.MultiTenancy.Payments.Dto;
 using Maya.Project.Notifications.Dto;
 using Maya.Project.Organizations.Dto;
 using Maya.Project.Sessions.Dto;
+using Maya.Project.Trades.Bases.Mappings;
 using Maya.Project.WebHooks.Dto;
 
 namespace Maya.Project
@@ -161,6 +162,13 @@ namespace Maya.Project
 
 
             /* ADD YOUR OWN CUSTOM AUTOMAPPER MAPPINGS HERE */
+
+            #region Trade
+            IntervalMapper.CreateMap(configuration);
+            CoinMapper.CreateMap(configuration);
+            #endregion
+
+
         }
     }
 }

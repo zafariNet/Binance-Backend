@@ -64,5 +64,9 @@
     <ProjectReference Include="..\Maya.Project.Core.Shared\Maya.Project.Core.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Trades\Candlesticks\" />
+  </ItemGroup>
+
 </Project>
 

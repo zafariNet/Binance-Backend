@@ -4,14 +4,16 @@ using Maya.Project.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Maya.Project.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200821160911_Add_Interval")]
+    partial class Add_Interval
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1962,36 +1964,6 @@ namespace Maya.Project.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("AppBinaryObjects");
-                });
-
-            modelBuilder.Entity("Maya.Project.Trades.Bases.Coin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Icon")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100)
-                        .IsUnicode(true);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200)
-                        .IsUnicode(true);
-
-                    b.Property<string>("Symbol")
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30)
-                        .IsUnicode(true);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Coins","Trade");
                 });
 
             modelBuilder.Entity("Maya.Project.Trades.Bases.Interval", b =>

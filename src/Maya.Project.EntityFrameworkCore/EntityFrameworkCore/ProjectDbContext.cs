@@ -1,5 +1,4 @@
 ﻿using Abp.IdentityServer4;
-using Abp.Organizations;
 using Abp.Zero.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Maya.Project.Authorization.Delegation;
@@ -12,6 +11,7 @@ using Maya.Project.MultiTenancy;
 using Maya.Project.MultiTenancy.Accounting;
 using Maya.Project.MultiTenancy.Payments;
 using Maya.Project.Storage;
+using Maya.Project.Trades.Bases;
 
 namespace Maya.Project.EntityFrameworkCore
 {
@@ -37,6 +37,13 @@ namespace Maya.Project.EntityFrameworkCore
 
         public virtual DbSet<UserDelegation> UserDelegations { get; set; }
 
+        #region Trade
+
+        public virtual DbSet<Interval> Intervals { get; set; }
+        public virtual DbSet<Coin> Coins { get; set; }
+
+        #endregion
+
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options)
             : base(options)
         {
@@ -45,6 +52,7 @@ namespace Maya.Project.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<BinaryObject>(b =>
@@ -92,6 +100,15 @@ namespace Maya.Project.EntityFrameworkCore
                 b.HasIndex(e => new { e.TenantId, e.SourceUserId });
                 b.HasIndex(e => new { e.TenantId, e.TargetUserId });
             });
+
+            #region Trade
+
+
+
+            modelBuilder.ApplyConfiguration(new IntervalConfig());
+            modelBuilder.ApplyConfiguration(new CoinConfig());
+
+            #endregion
 
             modelBuilder.ConfigurePersistedGrantEntity();
         }
