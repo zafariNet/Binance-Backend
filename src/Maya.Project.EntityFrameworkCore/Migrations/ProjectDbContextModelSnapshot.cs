@@ -1964,61 +1964,6 @@ namespace Maya.Project.Migrations
                     b.ToTable("AppBinaryObjects");
                 });
 
-            modelBuilder.Entity("Maya.Project.Trades.Bases.Coin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Icon")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100)
-                        .IsUnicode(true);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200)
-                        .IsUnicode(true);
-
-                    b.Property<string>("Symbol")
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30)
-                        .IsUnicode(true);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Coins","Trade");
-                });
-
-            modelBuilder.Entity("Maya.Project.Trades.Bases.Interval", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(500)")
-                        .HasMaxLength(500)
-                        .IsUnicode(true);
-
-                    b.Property<string>("Symbol")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50)
-                        .IsUnicode(true);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Intervals","Trade");
-                });
-
             modelBuilder.Entity("Maya.Project.Editions.SubscribableEdition", b =>
                 {
                     b.HasBaseType("Abp.Application.Editions.Edition");
